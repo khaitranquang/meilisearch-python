@@ -34,6 +34,7 @@ class Client:
         api_key: Optional[str] = None,
         timeout: Optional[int] = None,
         client_agents: Optional[Tuple[str, ...]] = None,
+        custom_headers: Optional[Mapping[str, str]] = None,
     ) -> None:
         """
         Parameters
@@ -51,7 +52,7 @@ class Client:
         """
         self.config = Config(url, api_key, timeout=timeout, client_agents=client_agents)
 
-        self.http = HttpRequests(self.config)
+        self.http = HttpRequests(self.config, custom_headers)
 
         self.task_handler = TaskHandler(self.config)
 
