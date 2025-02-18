@@ -17,14 +17,14 @@ from meilisearch.version import qualified_version
 
 
 class HttpRequests:
-    def __init__(self, config: Config, custom_headers: Optional[Mapping[str, str]] = None) -> None:
+    def __init__(self, config: Config) -> None:
         self.config = config
         self.headers = {
             "Authorization": f"Bearer {self.config.api_key}",
             "User-Agent": _build_user_agent(config.client_agents),
         }
-        if custom_headers is not None:
-            self.headers.update(custom_headers)
+        if self.config.custom_headers is not None:
+            self.headers.update(self.config.custom_headers)
 
     def send_request(
         self,

@@ -50,9 +50,9 @@ class Client:
             Used to send additional client agent information for clients extending the functionality
             of this client.
         """
-        self.config = Config(url, api_key, timeout=timeout, client_agents=client_agents)
+        self.config = Config(url, api_key, timeout=timeout, client_agents=client_agents, custom_headers=custom_headers)
 
-        self.http = HttpRequests(self.config, custom_headers)
+        self.http = HttpRequests(self.config)
 
         self.task_handler = TaskHandler(self.config)
 

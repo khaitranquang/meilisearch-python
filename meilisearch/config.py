@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Mapping
 
 
 class Config:
@@ -51,6 +51,7 @@ class Config:
         api_key: Optional[str] = None,
         timeout: Optional[int] = None,
         client_agents: Optional[Tuple[str, ...]] = None,
+        custom_headers: Optional[Mapping[str, str]] = None,
     ) -> None:
         """
         Parameters
@@ -65,4 +66,5 @@ class Config:
         self.api_key = api_key
         self.timeout = timeout
         self.client_agents = client_agents
+        self.custom_headers = custom_headers
         self.paths = self.Paths()
